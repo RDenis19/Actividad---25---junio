@@ -29,7 +29,7 @@ class Estudiante(models.Model):
         return self.lasmatriculas.all()
 
     def costo_total(self):
-        return (self.lasmatriculas.aggregate(total=Sum('costo'))['total'] or 0)
+        return sum(self.lasmatriculas('costo'))
     
 class Modulo(models.Model):
     """
